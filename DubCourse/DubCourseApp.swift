@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct DubCourseApp: App {
+    
+    let locationManager = LocationManager()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            AppTabView().environmentObject(locationManager)
         }
     }
 }
