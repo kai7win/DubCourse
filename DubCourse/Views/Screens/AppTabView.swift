@@ -36,6 +36,7 @@ struct AppTabView: View {
             }
             
         }
+        .onAppear { CloudKitManager.shared.getUserRecord() }
         .accentColor(.brandPrimary)
     }
 }
