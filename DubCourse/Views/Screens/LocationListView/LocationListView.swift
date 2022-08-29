@@ -11,6 +11,8 @@ struct LocationListView: View {
     
     @EnvironmentObject private var locationManager:LocationManager
     
+    @StateObject private var viewModel = LocationListViewModel()
+    
     var body: some View {
         NavigationView {
             
@@ -21,12 +23,15 @@ struct LocationListView: View {
                                     LocationDetailView(viewModel: LocationDetailViewModel(location: location))
                     ){
                         
-                        LocationCell(location: location)
+                        LocationCell(location: location, profiles: viewModel.checkedInProfiles[location.id,default: []])
                     }
                 }
+                
             }
             .listStyle(.plain)
             .navigationTitle("Grab Spots")
+            .onAppear { viewModel.getCheckInProfilesDictionary() }
+            
         }
     }
 }
