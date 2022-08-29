@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DE51462028BA6A6500600D9E /* LocationDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE51461F28BA6A6500600D9E /* LocationDetailViewModel.swift */; };
+		DE51462228BAF67100600D9E /* ProfileModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE51462128BAF67100600D9E /* ProfileModalView.swift */; };
 		DE701FA228B30E9300BCED2D /* DubCourseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE701FA128B30E9300BCED2D /* DubCourseApp.swift */; };
 		DE701FA628B30E9400BCED2D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE701FA528B30E9400BCED2D /* Assets.xcassets */; };
 		DE701FA928B30E9400BCED2D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE701FA828B30E9400BCED2D /* Preview Assets.xcassets */; };
@@ -42,6 +44,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DE51461F28BA6A6500600D9E /* LocationDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailViewModel.swift; sourceTree = "<group>"; };
+		DE51462128BAF67100600D9E /* ProfileModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModalView.swift; sourceTree = "<group>"; };
 		DE701F9E28B30E9300BCED2D /* DubCourse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DubCourse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE701FA128B30E9300BCED2D /* DubCourseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DubCourseApp.swift; sourceTree = "<group>"; };
 		DE701FA528B30E9400BCED2D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -90,6 +94,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DE51461E28BA6A2F00600D9E /* LocationDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				DE51461F28BA6A6500600D9E /* LocationDetailViewModel.swift */,
+				DE8DE3C328B324BD00B21EA0 /* LocationDetailView.swift */,
+				DE51462128BAF67100600D9E /* ProfileModalView.swift */,
+			);
+			path = LocationDetailView;
+			sourceTree = "<group>";
+		};
 		DE701F9528B30E9300BCED2D = {
 			isa = PBXGroup;
 			children = (
@@ -163,11 +177,11 @@
 		DE8DE3DB28B35F1400B21EA0 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				DE51461E28BA6A2F00600D9E /* LocationDetailView */,
 				DE8DE42828B8E8BA00B21EA0 /* ProfileView */,
 				DE8DE3EE28B3D69B00B21EA0 /* LocationMapView */,
 				DE8DE3C228B324BD00B21EA0 /* AppTabView.swift */,
 				DE8DE3BF28B324BD00B21EA0 /* LocationListView.swift */,
-				DE8DE3C328B324BD00B21EA0 /* LocationDetailView.swift */,
 				DE8DE40228B7190300B21EA0 /* OnboardView.swift */,
 			);
 			path = Screens;
@@ -331,7 +345,9 @@
 				DE8DE3C628B324BD00B21EA0 /* ProfileView.swift in Sources */,
 				DE8DE42C28B9825800B21EA0 /* LoadingView.swift in Sources */,
 				DE8DE3E928B3C7E800B21EA0 /* Constants.swift in Sources */,
+				DE51462228BAF67100600D9E /* ProfileModalView.swift in Sources */,
 				DE8DE3D428B3567800B21EA0 /* CustomModifiers.swift in Sources */,
+				DE51462028BA6A6500600D9E /* LocationDetailViewModel.swift in Sources */,
 				DE8DE3CB28B324CB00B21EA0 /* Color+Ext.swift in Sources */,
 				DE8DE3F028B3D6BF00B21EA0 /* LocationMapViewModel.swift in Sources */,
 				DE701FA228B30E9300BCED2D /* DubCourseApp.swift in Sources */,

@@ -42,4 +42,15 @@ struct AlertContext{
     
     static let updateProfileFailure = AlertItem(title: Text("Profile Update Failed!"), message: Text("We were unable to update your profile at this time \nPlease try again later."), dismissButton: .default(Text("OK")))
     
+    
+    // MARK: - LocationDetailView Errors
+    
+    static let invalidPhoneNumber = AlertItem(title: Text("Invalid Phone Number"), message: Text("The phone number for the location is invalid"), dismissButton: .default(Text("OK")))
+    
+    static let unableToGetCheckInStatus = AlertItem(title: Text("Server Error"), message: Text("Unable to retrieve checked in status of the current user. \nPlease try again"), dismissButton: .default(Text("OK")))
+    
+    static let unableToCheckInOrOut = AlertItem(title: Text("Server Error"), message: Text("We are unable to check in/out at this time. \nPlease try again"), dismissButton: .default(Text("OK")))
+    
+    static let unableToGetCheckInProfiels = AlertItem(title: Text("Server Error"), message: Text("We are unable to get user checked into this location at this time.\nPlease try again"), dismissButton: .default(Text("OK")))
+    
 }
