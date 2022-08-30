@@ -25,13 +25,15 @@ struct ProfileModalView: View {
                 
                 Text(profile.companyName)
                     .fontWeight(.semibold)
-                    .font(.title2)
                     .lineLimit(1)
+                    .minimumScaleFactor(0.75)
                     .foregroundColor(.secondary)
+                    .accessibilityLabel(Text("Works at \(profile.companyName)"))
                 
                 Text(profile.bio)
                     .lineLimit(3)
                     .padding()
+                    .accessibilityLabel(Text("Bio, \(profile.bio)"))
             }
             .frame(width: 300, height: 230)
             .background(Color(.secondarySystemBackground))
@@ -52,6 +54,7 @@ struct ProfileModalView: View {
                 .clipShape(Circle())
                 .shadow(color: .black.opacity(0.5), radius: 4, x: 0, y: 6)
                 .offset(y: -120)
+                .accessibilityHidden(true)
         }
     }
 }

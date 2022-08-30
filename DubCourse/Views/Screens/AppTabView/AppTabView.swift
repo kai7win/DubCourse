@@ -9,11 +9,12 @@ import SwiftUI
 
 struct AppTabView: View {
     
-    let appearance = UITabBarAppearance()
-    
     init() {
+        let appearance = UITabBarAppearance()
         UITabBar.appearance().scrollEdgeAppearance = appearance
     }
+    
+    @StateObject private var viewModel = AppTabViewModel()
     
     var body: some View {
         TabView {
@@ -36,8 +37,14 @@ struct AppTabView: View {
             }
             
         }
-        .onAppear { CloudKitManager.shared.getUserRecord() }
+        .onAppear {
+            CloudKitManager.shared.getUserRecord()
+            viewModel.runStartupChecks()
+        }
         .accentColor(.brandPrimary)
+        .sheet(isPresented: $viewModel.isShowingOnboardView,onDismiss: viewModel.checkIfLocationServiceIsEnable){
+            OnboardView(isShowingOnboardView: $viewModel.isShowingOnboardView)
+        }
     }
 }
 

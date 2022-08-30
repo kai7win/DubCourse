@@ -83,8 +83,7 @@ final class CloudKitManager{
     func getCheckedInProfilesDictionary(completed:@escaping (Result<[CKRecord.ID:[DDGProfile]],Error>) -> Void){
         let predicate = NSPredicate(format: "isCheckedNilCheck == 1")
         let query = CKQuery(recordType: RecordType.profile, predicate: predicate)
-        let operation = CKQueryOperation(query: query)
-//        operation.desiredKeys = [DDGProfile.kIsCheckedIn,DDGProfile.kAvatar]
+        let operation = CKQueryOperation(query: query) 
         
         var checkedInProfiles:[CKRecord.ID:[DDGProfile]] = [:]
         
@@ -110,6 +109,39 @@ final class CloudKitManager{
         
     }
     
+    
+    func getCheckedInProfilesCount(completed:@escaping (Result<[CKRecord.ID:Int],Error>) -> Void){
+        let predicate = NSPredicate(format: "isCheckedNilCheck == 1")
+        let query = CKQuery(recordType: RecordType.profile, predicate: predicate)
+        let operation = CKQueryOperation(query: query)
+        operation.desiredKeys = [DDGProfile.kIsCheckedIn]
+        
+        var checkedInProfiles:[CKRecord.ID:Int] = [:]
+        
+        operation.recordFetchedBlock = { record in
+            
+            //Build our dictionary
+            guard let locationReference = record[DDGProfile.kIsCheckedIn] as? CKRecord.Reference else { return }
+            
+            if let count = checkedInProfiles[locationReference.recordID]{
+                checkedInProfiles[locationReference.recordID] = count + 1
+            }else{
+                checkedInProfiles[locationReference.recordID] = 1
+            }
+            
+        }
+        operation.queryCompletionBlock = { cursor,error in
+            guard error == nil else {
+                completed(.failure(error!))
+                return
+            }
+            
+            //handle cussor in later video
+            completed(.success(checkedInProfiles))
+        }
+        CKContainer.default().publicCloudDatabase.add(operation)
+        
+    }
     
     
     func batchSave(records:[CKRecord],completed:@escaping (Result<[CKRecord],Error>) -> Void){

@@ -10,6 +10,10 @@
 		DE51462028BA6A6500600D9E /* LocationDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE51461F28BA6A6500600D9E /* LocationDetailViewModel.swift */; };
 		DE51462228BAF67100600D9E /* ProfileModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE51462128BAF67100600D9E /* ProfileModalView.swift */; };
 		DE51462528BC915800600D9E /* LocationListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE51462428BC915800600D9E /* LocationListViewModel.swift */; };
+		DE51462828BCA09300600D9E /* MapBalloon.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE51462728BCA09300600D9E /* MapBalloon.swift */; };
+		DE51462A28BCA73800600D9E /* DDGAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE51462928BCA73800600D9E /* DDGAnnotation.swift */; };
+		DE51462D28BCD3BD00600D9E /* AppTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE51462C28BCD3BD00600D9E /* AppTabViewModel.swift */; };
+		DE51462F28BDFB7900600D9E /* ProfileSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE51462E28BDFB7900600D9E /* ProfileSheetView.swift */; };
 		DE701FA228B30E9300BCED2D /* DubCourseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE701FA128B30E9300BCED2D /* DubCourseApp.swift */; };
 		DE701FA628B30E9400BCED2D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE701FA528B30E9400BCED2D /* Assets.xcassets */; };
 		DE701FA928B30E9400BCED2D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE701FA828B30E9400BCED2D /* Preview Assets.xcassets */; };
@@ -48,6 +52,10 @@
 		DE51461F28BA6A6500600D9E /* LocationDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailViewModel.swift; sourceTree = "<group>"; };
 		DE51462128BAF67100600D9E /* ProfileModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModalView.swift; sourceTree = "<group>"; };
 		DE51462428BC915800600D9E /* LocationListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationListViewModel.swift; sourceTree = "<group>"; };
+		DE51462728BCA09300600D9E /* MapBalloon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapBalloon.swift; sourceTree = "<group>"; };
+		DE51462928BCA73800600D9E /* DDGAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDGAnnotation.swift; sourceTree = "<group>"; };
+		DE51462C28BCD3BD00600D9E /* AppTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabViewModel.swift; sourceTree = "<group>"; };
+		DE51462E28BDFB7900600D9E /* ProfileSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSheetView.swift; sourceTree = "<group>"; };
 		DE701F9E28B30E9300BCED2D /* DubCourse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DubCourse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE701FA128B30E9300BCED2D /* DubCourseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DubCourseApp.swift; sourceTree = "<group>"; };
 		DE701FA528B30E9400BCED2D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -102,6 +110,7 @@
 				DE51461F28BA6A6500600D9E /* LocationDetailViewModel.swift */,
 				DE8DE3C328B324BD00B21EA0 /* LocationDetailView.swift */,
 				DE51462128BAF67100600D9E /* ProfileModalView.swift */,
+				DE51462E28BDFB7900600D9E /* ProfileSheetView.swift */,
 			);
 			path = LocationDetailView;
 			sourceTree = "<group>";
@@ -114,6 +123,24 @@
 				DE8DE3CF28B3469C00B21EA0 /* LocationCell.swift */,
 			);
 			path = LocationListView;
+			sourceTree = "<group>";
+		};
+		DE51462628BC9F9600600D9E /* Map Annotation */ = {
+			isa = PBXGroup;
+			children = (
+				DE51462728BCA09300600D9E /* MapBalloon.swift */,
+				DE51462928BCA73800600D9E /* DDGAnnotation.swift */,
+			);
+			path = "Map Annotation";
+			sourceTree = "<group>";
+		};
+		DE51462B28BCD39D00600D9E /* AppTabView */ = {
+			isa = PBXGroup;
+			children = (
+				DE51462C28BCD3BD00600D9E /* AppTabViewModel.swift */,
+				DE8DE3C228B324BD00B21EA0 /* AppTabView.swift */,
+			);
+			path = AppTabView;
 			sourceTree = "<group>";
 		};
 		DE701F9528B30E9300BCED2D = {
@@ -188,11 +215,11 @@
 		DE8DE3DB28B35F1400B21EA0 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				DE51462B28BCD39D00600D9E /* AppTabView */,
 				DE51462328BC908300600D9E /* LocationListView */,
 				DE51461E28BA6A2F00600D9E /* LocationDetailView */,
 				DE8DE42828B8E8BA00B21EA0 /* ProfileView */,
 				DE8DE3EE28B3D69B00B21EA0 /* LocationMapView */,
-				DE8DE3C228B324BD00B21EA0 /* AppTabView.swift */,
 				DE8DE40228B7190300B21EA0 /* OnboardView.swift */,
 			);
 			path = Screens;
@@ -201,6 +228,7 @@
 		DE8DE3DD28B35F8100B21EA0 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				DE51462628BC9F9600600D9E /* Map Annotation */,
 				DE8DE40828B7198900B21EA0 /* Buttons */,
 				DE8DE40928B7BBB800B21EA0 /* UIKit Components */,
 				DE8DE3D128B346EC00B21EA0 /* AvatarView.swift */,
@@ -356,6 +384,7 @@
 				DE701FA228B30E9300BCED2D /* DubCourseApp.swift in Sources */,
 				DE8DE42A28B8E8D400B21EA0 /* ProfileViewModel.swift in Sources */,
 				DE8DE3E428B3A36900B21EA0 /* MockData.swift in Sources */,
+				DE51462D28BCD3BD00600D9E /* AppTabViewModel.swift in Sources */,
 				DE8DE3C828B324BD00B21EA0 /* LocationDetailView.swift in Sources */,
 				DE8DE3E228B39F3600B21EA0 /* DDGProfile.swift in Sources */,
 				DE8DE3E028B398A800B21EA0 /* DDGLocation.swift in Sources */,
@@ -367,11 +396,14 @@
 				DE8DE40728B7197A00B21EA0 /* XDismissButton.swift in Sources */,
 				DE8DE3ED28B3D21B00B21EA0 /* AlertItem.swift in Sources */,
 				DE8DE3D628B356C500B21EA0 /* View+Ext.swift in Sources */,
+				DE51462A28BCA73800600D9E /* DDGAnnotation.swift in Sources */,
 				DE8DE3D028B3469C00B21EA0 /* LocationCell.swift in Sources */,
 				DE51462528BC915800600D9E /* LocationListViewModel.swift in Sources */,
 				DE8DE3EB28B3D07700B21EA0 /* CKRecord+Ext.swift in Sources */,
 				DE8DE3F328B4586F00B21EA0 /* LocationManager.swift in Sources */,
 				DE8DE3F728B6393500B21EA0 /* CKAsset+Ext.swift in Sources */,
+				DE51462828BCA09300600D9E /* MapBalloon.swift in Sources */,
+				DE51462F28BDFB7900600D9E /* ProfileSheetView.swift in Sources */,
 				DE8DE40328B7190300B21EA0 /* OnboardView.swift in Sources */,
 				DE8DE3D828B35C8600B21EA0 /* DDGButton.swift in Sources */,
 				DE8DE42728B8993900B21EA0 /* UIImage+Ext.swift in Sources */,
@@ -513,7 +545,6 @@
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Dub Dub Grub uses your location to show you where you are in relation to your friends and food.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -545,7 +576,6 @@
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Dub Dub Grub uses your location to show you where you are in relation to your friends and food.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -25,6 +25,11 @@ struct ProfileView: View {
                             AvatarView(image: viewModel.avatar, size: 84)
                             EditImage()
                         }
+                        .accessibilityElement(children: .ignore)
+                        .accessibilityAddTraits(.isButton)
+                        .accessibilityLabel(Text("Profile Photo"))
+                        .accessibilityHint(Text("Opens the iPhone's photo picker"))
+                        
                         .padding(.leading,12)
                         .onTapGesture { viewModel.isShowingPhotoPicker = true }
                         
@@ -44,11 +49,13 @@ struct ProfileView: View {
                     
                     HStack{
                         CharactersRemainView(currentCount: viewModel.bio.count)
+                            .accessibilityAddTraits(.isHeader)
                         Spacer()
                         
                         if viewModel.isCheckedIn{
                             Button{
                                 viewModel.checkout()
+                                playHaptic()
                             }label: {
                                 Label("Check out", systemImage: "mappin.and.ellipse")
                                     .font(.system(size: 12, weight: .semibold))
@@ -58,6 +65,7 @@ struct ProfileView: View {
                                     .background(Color.grubRed)
                                     .cornerRadius(8)
                             }
+                            .accessibilityLabel(Text("Check out of current location"))
                         }
                         
                        
@@ -69,6 +77,8 @@ struct ProfileView: View {
                             RoundedRectangle(cornerRadius: 8)
                                 .stroke(Color.secondary,lineWidth: 1)
                         )
+                        .accessibilityLabel(Text("Bio,\(viewModel.bio)"))
+                        .accessibilityHint(Text("This TextField has a 100 character maximum"))
                     
                 }
                 .padding(.horizontal,20)
@@ -88,6 +98,7 @@ struct ProfileView: View {
             
         }
         .navigationTitle("Profile")
+        .navigationBarTitleDisplayMode(DeviceTypes.isiPhone8Standard ? .inline:.automatic)
         .toolbar{
             Button {
                 dismissKeyboard()
