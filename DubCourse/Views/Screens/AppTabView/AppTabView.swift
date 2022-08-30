@@ -43,7 +43,7 @@ struct AppTabView: View {
         }
         .accentColor(.brandPrimary)
         .sheet(isPresented: $viewModel.isShowingOnboardView,onDismiss: viewModel.checkIfLocationServiceIsEnable){
-            OnboardView(isShowingOnboardView: $viewModel.isShowingOnboardView)
+            OnboardView()
         }
     }
 }

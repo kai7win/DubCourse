@@ -13,6 +13,8 @@ enum CheckInStatus{
     case checkedIn,checkedOut
 }
 
+
+
 final class LocationDetailViewModel:ObservableObject{
     
     @Published var checkedInProfiles = [DDGProfile]()
@@ -74,10 +76,10 @@ final class LocationDetailViewModel:ObservableObject{
     func updateCheckInStatus(to checkInStatus:CheckInStatus){
         //Retrieve the DDGProfile
         guard let profileRecordID = CloudKitManager.shared.profileRecordID else {
-            // show alert
+            alertItem = AlertContext.unableToGetProfile
             return
         }
-        
+        showLoadingView()
         CloudKitManager.shared.fetchRecord(with: profileRecordID) { [self] result in
             switch result {
                 
@@ -95,8 +97,10 @@ final class LocationDetailViewModel:ObservableObject{
                 CloudKitManager.shared.save(record: record) {  result in
                     
                     DispatchQueue.main.async { [self] in
+                        hideLoadingView()
                         switch result{
                         case .success(let record):
+                            HapticManager.playSuccess()
                             let profile = DDGProfile(record: record)
                             //Update our checkedInProfiles array
                             switch checkInStatus {
@@ -108,7 +112,7 @@ final class LocationDetailViewModel:ObservableObject{
                             
                             isCheckedIn = checkInStatus == .checkedIn
                             
-                        
+                            
                         case .failure(_):
                             alertItem = AlertContext.unableToCheckInOrOut
                         }
@@ -118,6 +122,7 @@ final class LocationDetailViewModel:ObservableObject{
                 }
                 
             case .failure(_):
+                hideLoadingView()
                 alertItem = AlertContext.unableToCheckInOrOut
             }
             
@@ -140,7 +145,7 @@ final class LocationDetailViewModel:ObservableObject{
         }
     }
     
-    func show(profile:DDGProfile,in sizeCategiry:ContentSizeCategory){
+    func show(_ profile:DDGProfile,in sizeCategiry:ContentSizeCategory){
         
         selectedProfile = profile
         if sizeCategiry >= .accessibilityMedium{
@@ -154,3 +159,5 @@ final class LocationDetailViewModel:ObservableObject{
     private func showLoadingView(){ isLoading = true }
     private func hideLoadingView(){ isLoading = false }
 }
+
+

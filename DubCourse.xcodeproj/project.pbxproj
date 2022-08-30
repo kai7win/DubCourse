@@ -14,6 +14,7 @@
 		DE51462A28BCA73800600D9E /* DDGAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE51462928BCA73800600D9E /* DDGAnnotation.swift */; };
 		DE51462D28BCD3BD00600D9E /* AppTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE51462C28BCD3BD00600D9E /* AppTabViewModel.swift */; };
 		DE51462F28BDFB7900600D9E /* ProfileSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE51462E28BDFB7900600D9E /* ProfileSheetView.swift */; };
+		DE51463128BE28FB00600D9E /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE51463028BE28FB00600D9E /* HapticManager.swift */; };
 		DE701FA228B30E9300BCED2D /* DubCourseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE701FA128B30E9300BCED2D /* DubCourseApp.swift */; };
 		DE701FA628B30E9400BCED2D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE701FA528B30E9400BCED2D /* Assets.xcassets */; };
 		DE701FA928B30E9400BCED2D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE701FA828B30E9400BCED2D /* Preview Assets.xcassets */; };
@@ -56,6 +57,7 @@
 		DE51462928BCA73800600D9E /* DDGAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDGAnnotation.swift; sourceTree = "<group>"; };
 		DE51462C28BCD3BD00600D9E /* AppTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabViewModel.swift; sourceTree = "<group>"; };
 		DE51462E28BDFB7900600D9E /* ProfileSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSheetView.swift; sourceTree = "<group>"; };
+		DE51463028BE28FB00600D9E /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		DE701F9E28B30E9300BCED2D /* DubCourse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DubCourse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE701FA128B30E9300BCED2D /* DubCourseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DubCourseApp.swift; sourceTree = "<group>"; };
 		DE701FA528B30E9400BCED2D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -273,6 +275,7 @@
 			children = (
 				DE8DE3E628B3C6C600B21EA0 /* CloudKitManager.swift */,
 				DE8DE3F228B4586F00B21EA0 /* LocationManager.swift */,
+				DE51463028BE28FB00600D9E /* HapticManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -378,6 +381,7 @@
 				DE8DE3E928B3C7E800B21EA0 /* Constants.swift in Sources */,
 				DE51462228BAF67100600D9E /* ProfileModalView.swift in Sources */,
 				DE8DE3D428B3567800B21EA0 /* CustomModifiers.swift in Sources */,
+				DE51463128BE28FB00600D9E /* HapticManager.swift in Sources */,
 				DE51462028BA6A6500600D9E /* LocationDetailViewModel.swift in Sources */,
 				DE8DE3CB28B324CB00B21EA0 /* Color+Ext.swift in Sources */,
 				DE8DE3F028B3D6BF00B21EA0 /* LocationMapViewModel.swift in Sources */,

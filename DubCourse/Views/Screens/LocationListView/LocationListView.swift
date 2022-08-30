@@ -18,7 +18,6 @@ struct LocationListView: View {
             
             List {
                 ForEach(locationManager.locations) { location in
-                    
                     NavigationLink(destination:
                     viewModel.createLocationDetailView(for: location, in: sizeCategory)
                     ){
@@ -32,7 +31,7 @@ struct LocationListView: View {
             .listStyle(.plain)
             .navigationTitle("Grab Spots")
             .onAppear { viewModel.getCheckInProfilesDictionary() }
-            
+            .alert(item: $viewModel.alertItem) { $0.alert }
         }
     }
 }

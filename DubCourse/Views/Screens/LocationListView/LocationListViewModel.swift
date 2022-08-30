@@ -8,37 +8,41 @@
 import CloudKit
 import SwiftUI
 
-final class LocationListViewModel:ObservableObject{
+extension LocationListView{
     
-    @Published var checkedInProfiles:[CKRecord.ID:[DDGProfile]] = [:]
-    
-    func getCheckInProfilesDictionary(){
-        CloudKitManager.shared.getCheckedInProfilesDictionary { result in
-            DispatchQueue.main.async {
-                switch result{
-                case .success(let checkedInProfiles):
-                    self.checkedInProfiles = checkedInProfiles
-                case .failure(_):
-                    print("Debug: Error getting back dictionary")
-                }
-            }
-            
-        }
-    }
-    
-    func createVoiceOverSummary(for location:DDGLocation) -> String{
-        let count = checkedInProfiles[location.id,default: []].count
-        let personPlurality = count == 1 ? "person" : "people"
-        return "\(location.name) \(count) \(personPlurality) checkedin."
-    }
-    
-    @ViewBuilder func createLocationDetailView(for location: DDGLocation, in sizeCategory: ContentSizeCategory) -> some View{
+    final class LocationListViewModel:ObservableObject{
         
-        if sizeCategory >= .accessibilityMedium{
-            LocationDetailView(viewModel: LocationDetailViewModel(location: location)).embedInScrollView()
-        }else{
-            LocationDetailView(viewModel: LocationDetailViewModel(location: location))
+        @Published var checkedInProfiles:[CKRecord.ID:[DDGProfile]] = [:]
+        @Published var alertItem:AlertItem?
+        
+        func getCheckInProfilesDictionary(){
+            CloudKitManager.shared.getCheckedInProfilesDictionary { result in
+                DispatchQueue.main.async { [self] in
+                    switch result{
+                    case .success(let checkedInProfiles):
+                        self.checkedInProfiles = checkedInProfiles
+                    case .failure(_):
+                        alertItem = AlertContext.unableToGetAllCheckInProfiels
+                    }
+                }
+                
+            }
+        }
+        
+        func createVoiceOverSummary(for location:DDGLocation) -> String{
+            let count = checkedInProfiles[location.id,default: []].count
+            let personPlurality = count == 1 ? "person" : "people"
+            return "\(location.name) \(count) \(personPlurality) checkedin."
+        }
+        
+        @ViewBuilder func createLocationDetailView(for location: DDGLocation, in sizeCategory: ContentSizeCategory) -> some View{
+            
+            if sizeCategory >= .accessibilityMedium{
+                LocationDetailView(viewModel: LocationDetailViewModel(location: location)).embedInScrollView()
+            }else{
+                LocationDetailView(viewModel: LocationDetailViewModel(location: location))
+            }
         }
     }
-     
+    
 }
