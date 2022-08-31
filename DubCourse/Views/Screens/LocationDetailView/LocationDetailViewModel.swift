@@ -26,13 +26,17 @@ final class LocationDetailViewModel:ObservableObject{
     
     var location:DDGLocation
     var selectedProfile:DDGProfile?
+    var buttonColor:Color { isCheckedIn ? .grubRed:.brandPrimary }
+    var buttonImageTitle:String { isCheckedIn ?  "person.fill.xmark" : "person.fill.checkmark" }
+    var buttonA11yText:String { isCheckedIn ?  "Check out of location" : "Check into location" }
+    
     
     init(location:DDGLocation){
         self.location = location
     }
     
-    func determineColumns(for sizeCategory:ContentSizeCategory) -> [GridItem]{
-        let numberOfColumns = sizeCategory >= .accessibilityMedium ? 1 : 3
+    func determineColumns(for dynamicTypeSize:DynamicTypeSize) -> [GridItem]{
+        let numberOfColumns = dynamicTypeSize >= .accessibility3 ? 1 : 3
         return Array(repeating: GridItem(.flexible()), count: numberOfColumns)
     }
     
@@ -145,10 +149,10 @@ final class LocationDetailViewModel:ObservableObject{
         }
     }
     
-    func show(_ profile:DDGProfile,in sizeCategiry:ContentSizeCategory){
+    func show(_ profile:DDGProfile,in dynamicTypeSize:DynamicTypeSize){
         
         selectedProfile = profile
-        if sizeCategiry >= .accessibilityMedium{
+        if dynamicTypeSize >= .accessibility3{
             isShowingProfileSheet = true
         }else{
             isShowingProfileModal = true

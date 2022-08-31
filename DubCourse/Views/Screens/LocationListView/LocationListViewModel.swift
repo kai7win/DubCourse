@@ -35,9 +35,9 @@ extension LocationListView{
             return "\(location.name) \(count) \(personPlurality) checkedin."
         }
         
-        @ViewBuilder func createLocationDetailView(for location: DDGLocation, in sizeCategory: ContentSizeCategory) -> some View{
+        @ViewBuilder func createLocationDetailView(for location: DDGLocation, in dynamicTypeSize: DynamicTypeSize) -> some View{
             
-            if sizeCategory >= .accessibilityMedium{
+            if dynamicTypeSize >= .accessibility3{
                 LocationDetailView(viewModel: LocationDetailViewModel(location: location)).embedInScrollView()
             }else{
                 LocationDetailView(viewModel: LocationDetailViewModel(location: location))

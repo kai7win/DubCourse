@@ -11,12 +11,34 @@ import SwiftUI
 
 extension LocationMapView{
     
-    final class LocationMapViewModel:ObservableObject{
+    final class LocationMapViewModel:NSObject,ObservableObject,CLLocationManagerDelegate{
         
         @Published var checkedInProfiles:[CKRecord.ID:Int] = [:]
         @Published var isShowingDetailView = false
         @Published var alertItem:AlertItem?
         @Published var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.331516, longitude: -121.891054), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        
+        let deviceLocationManager = CLLocationManager()
+        
+        override init() {
+            super.init()
+            deviceLocationManager.delegate = self
+        }
+        
+        func requestAllowOnceLocationPermission(){
+            deviceLocationManager.requestLocation()
+        }
+        
+        func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+            guard let currentLocation = locations.last else { return }
+            withAnimation {
+                region = MKCoordinateRegion(center: currentLocation.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+            }
+        }
+        
+        func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+            print("Debug: Did fail with Error")
+        }
         
         func getLocations(for locationManager:LocationManager){
             CloudKitManager.shared.getLocations { result in
@@ -48,9 +70,9 @@ extension LocationMapView{
         }
         
         
-        @ViewBuilder func createLocationDetailView(for location: DDGLocation, in sizeCategory: ContentSizeCategory) -> some View{
+        @ViewBuilder func createLocationDetailView(for location: DDGLocation, in dynamicTypeSize: DynamicTypeSize) -> some View{
             
-            if sizeCategory >= .accessibilityMedium{
+            if dynamicTypeSize >= .accessibility3{
                 LocationDetailView(viewModel: LocationDetailViewModel(location: location)).embedInScrollView()
             }else{
                 LocationDetailView(viewModel: LocationDetailViewModel(location: location))
