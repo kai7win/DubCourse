@@ -11,33 +11,45 @@ import CloudKit
 struct ProfileView: View {
     
     @StateObject private var viewModel = ProfileViewModel()
+    @FocusState private var focusedTextField:ProfileTextField?
     
+    enum ProfileTextField{
+        case firstName,lastName,companyName,bio
+    }
     
     var body: some View {
         
         ZStack{
             VStack {
-
-                    
-                    HStack(spacing:16){
-                        
-                        ProfileImageView(image: viewModel.avatar)
+                HStack(spacing:16){
+                    ProfileImageView(image: viewModel.avatar)
                         .onTapGesture { viewModel.isShowingPhotoPicker = true }
+                    
+                    VStack(spacing:1){
+                        TextField("First Name",text: $viewModel.firstName)
+                            .profileNameStyle()
+                            .focused($focusedTextField,equals: .firstName)
+                            .onSubmit { focusedTextField = .lastName }
+                            .submitLabel(.next)
                         
-                        VStack(spacing:1){
-                            TextField("First Name",text: $viewModel.firstName).profileNameStyle()
-                            
-                            TextField("Last Name",text: $viewModel.lastName).profileNameStyle()
-                            
-                            TextField("Company Name", text: $viewModel.companyName)
-                        }
-                        .padding(.trailing,16)
+                        TextField("Last Name",text: $viewModel.lastName)
+                            .profileNameStyle()
+                            .focused($focusedTextField,equals: .lastName)
+                            .onSubmit { focusedTextField = .companyName }
+                            .submitLabel(.next)
+                        
+                        TextField("Company Name", text: $viewModel.companyName)
+                            .focused($focusedTextField,equals: .companyName)
+                            .onSubmit { focusedTextField = .bio }
+                            .submitLabel(.next)
                     }
-                    .padding(.vertical)
-                    .background(Color(.secondarySystemBackground))
-                    .cornerRadius(12)
-                    .padding(.horizontal)
-                                        
+                    .padding(.trailing,16)
+                }
+                .padding(.vertical)
+                .background(Color(.secondarySystemBackground))
+                .cornerRadius(12)
+                .padding(.horizontal)
+                
                 
                 VStack(alignment:.leading){
                     
@@ -57,6 +69,7 @@ struct ProfileView: View {
                     }
                     
                     BioTextEditor(text: $viewModel.bio)
+                        .focused($focusedTextField,equals: .bio)
                     
                 }
                 .padding(.horizontal,20)
@@ -71,20 +84,17 @@ struct ProfileView: View {
                 .padding(.bottom)
                 
             }
-            
+            .toolbar {
+                ToolbarItemGroup(placement: .keyboard) {
+                    Button("Dismiss"){ focusedTextField = nil }
+                }
+            }
             if viewModel.isLoading{ LoadingView() }
             
         }
         .navigationTitle("Profile")
         .navigationBarTitleDisplayMode(DeviceTypes.isiPhone8Standard ? .inline:.automatic)
-        .toolbar{
-            Button {
-                dismissKeyboard()
-            } label: {
-                Image(systemName: "keyboard.chevron.compact.down")
-            }
-            
-        }
+        .ignoresSafeArea(.keyboard)
         .task{
             viewModel.getProfile()
             viewModel.getCheckedInStatus()
