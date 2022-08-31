@@ -9,10 +9,10 @@ import SwiftUI
 
 struct AppTabView: View {
     
-    init() {
-        let appearance = UITabBarAppearance()
-        UITabBar.appearance().scrollEdgeAppearance = appearance
-    }
+//    init() {
+//        let appearance = UITabBarAppearance()
+//        UITabBar.appearance().scrollEdgeAppearance = appearance
+//    }
     
     @StateObject private var viewModel = AppTabViewModel()
     
@@ -37,8 +37,8 @@ struct AppTabView: View {
             }
             
         }
-        .onAppear {
-            CloudKitManager.shared.getUserRecord()
+        .task {
+            try? await CloudKitManager.shared.getUserRecord()
             viewModel.checkIfHasSeenOnboard()
         }
         .sheet(isPresented: $viewModel.isShowingOnboardView){

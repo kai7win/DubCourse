@@ -59,7 +59,7 @@ struct LocationMapView: View {
         
         .alert(item: $viewModel.alertItem, content: { $0.alert })
         
-        .onAppear{
+        .task{
             
             if locationManager.locations.isEmpty{
                 viewModel.getLocations(for: locationManager)

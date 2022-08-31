@@ -85,7 +85,7 @@ struct ProfileView: View {
             }
             
         }
-        .onAppear{
+        .task{
             viewModel.getProfile()
             viewModel.getCheckedInStatus()
         }
